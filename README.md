@@ -20,11 +20,16 @@ On this folder, run
 
 Therefore you can open your browser and navigate to [http://localhost:4000/] to open your local version of the blog.
 
-#### Installing on your machine
+#### Without using docker
 
+##### Installation
+This should only be done once.
 1. Follow the instructions listed [here](https://jekyllrb.com/docs/installation/).
     - Specifically, to install it on Mac, follow [this instructions](https://jekyllrb.com/docs/installation/macos/).
-2. On this folder, run ```jekyll serve```
+2. On this folder, run `bundle add webrick`. In fact this is only needed if using Ruby 3, but shouldn't hurt in other cases.
+
+##### Start local Jekyll
+On this folder, run ```jekyll serve```
 
 ### Open the blog
 After a while, the console will said something like:
