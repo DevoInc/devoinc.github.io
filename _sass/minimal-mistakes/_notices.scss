@@ -71,13 +71,13 @@
 /* Default notice */
 
 .notice {
-  @include notice($light-gray);
+  @include notice($dark-gray);
 }
 
 /* Primary notice */
 
 .notice--primary {
-  @include notice($primary-color);
+  @include notice(#707a08);
 }
 
 /* Info notice */

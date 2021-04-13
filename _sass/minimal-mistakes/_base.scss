@@ -108,10 +108,20 @@ abbr[data-original-title] {
 
 blockquote {
   margin: 2em 1em 2em 0;
-  padding-left: 1em;
+  padding-left: 2em;
   padding-right: 1em;
-  font-style: italic;
-  border-left: 0.25em solid $primary-color;
+  font-size: $type-size-4;
+  line-height: 1.5;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 9px;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, var(--light-blue)), color-stop(50%, var(--dark-blue)), color-stop(80%, var(--medium-green)));
+    background-image: linear-gradient(to bottom, var(--light-blue) 0 50%, var(--dark-blue) 50% 80%, var(--medium-green) 80% 100%);
+  }
 
   cite {
     font-style: italic;
@@ -138,6 +148,10 @@ a {
     color: $link-color-hover;
     outline: 0;
   }
+}
+
+.page a {
+  font-weight: 500;
 }
 
 /* buttons */

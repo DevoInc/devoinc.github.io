@@ -19,12 +19,12 @@
   @include breakpoint($large) {
     float: left;
     width: calc(#{$right-sidebar-width-narrow} - 1em);
-    opacity: 0.75;
+    //opacity: 0.75;
     -webkit-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
 
     &:hover {
-      opacity: 1;
+      //opacity: 1;
     }
 
     &.sticky {
@@ -127,12 +127,11 @@
   }
 
   img {
-    max-width: 110px;
+    max-width: 64px;
     border-radius: 50%;
 
     @include breakpoint($large) {
       padding: 5px;
-      border: 1px solid $border-color;
     }
   }
 }
@@ -158,6 +157,7 @@
 }
 
 .author__name {
+  color: var(--rich-black);
   margin: 0;
 
   @include breakpoint($large) {
@@ -195,6 +195,7 @@
 
   .author__urls {
     span.label {
+      display: none;
       padding-left: 5px;
     }
   }
@@ -249,7 +250,8 @@
   }
 
   @include breakpoint($large) {
-    display: block;
+    display: flex;
+    align-items: flex-start;
     position: relative;
     margin: 0;
     padding: 0;
@@ -310,6 +312,13 @@
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+
+    i[class*="fa-"] {
+      font-size: 22px;
+      &:not(:hover) {
+        color: var(--rich-black);
+      }
+    }
 
     &:hover {
       text-decoration: underline;

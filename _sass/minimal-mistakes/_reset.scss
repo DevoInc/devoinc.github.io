@@ -2,6 +2,53 @@
    STYLE RESETS
    ========================================================================== */
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Variables */
+@import "minimal-mistakes/variables";
+
+* { box-sizing: border-box; }
 * { box-sizing: border-box; }
 
 html {
@@ -9,6 +56,8 @@ html {
   box-sizing: border-box;
   background-color: $background-color;
   font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 
   @include breakpoint($medium) {
     font-size: 18px;
@@ -33,13 +82,13 @@ body { margin: 0; }
 /* Selected elements */
 
 ::-moz-selection {
-  color: #fff;
-  background: #000;
+  color: #000;
+  background: #feff03;
 }
 
 ::selection {
-  color: #fff;
-  background: #000;
+  color: #000;
+  background: #feff03;
 }
 
 /* Display HTML5 elements in IE6-9 and FF3 */
@@ -75,6 +124,7 @@ audio:not([controls]) {
 }
 
 a {
+  text-decoration: none;
   color: $link-color;
 }
 
@@ -156,8 +206,8 @@ button,
 html input[type="button"], // avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls
 input[type="reset"],
 input[type="submit"] {
-    -webkit-appearance: button; /* corrects inability to style clickable `input` types in iOS*/
-    cursor: pointer; /* improves usability and consistency of cursor style between image-type `input` and others*/
+  -webkit-appearance: button; /* corrects inability to style clickable `input` types in iOS*/
+  cursor: pointer; /* improves usability and consistency of cursor style between image-type `input` and others*/
 }
 
 label,
@@ -168,7 +218,7 @@ input[type="reset"],
 input[type="submit"],
 input[type="radio"],
 input[type="checkbox"] {
-    cursor: pointer; /* improves usability and consistency of cursor style between image-type `input` and others*/
+  cursor: pointer; /* improves usability and consistency of cursor style between image-type `input` and others*/
 }
 
 input[type="search"] { /* Appearance in Safari/Chrome*/

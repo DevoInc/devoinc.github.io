@@ -18,7 +18,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Devo Engineering Blog
+title: " <b>Engineering</b> Blog"
+logo: "/assets/images/devo-theme/devo-logo-dark.svg"
+locale: "en"
 #subtitle: "whatever"
 name: Devo Engineering Blog
 #email: your-email@example.com
@@ -29,8 +31,6 @@ twitter_username: DEVO_devteam
 github_username:  devoinc
 #repository: "DevoInc/devoinc.github.io.git"
 
-#TODO teaser: /assets/images/500x300.png
-#TODO logo: "/assets/images/88x88.png"
 
 # For jekyll-seo-tag
 twitter:
@@ -40,30 +40,19 @@ social:
   links:
     - "https://twitter.com/DEVO_devteam"
     - "https://www.linkedin.com/company/devoinc/"
+    -
 author:
   name: "Devo dev team"
-#  avatar: ""
-#  bio: >-
-#  location: "Madrid"
+  avatar: "/assets/images/authors/dev_team.svg"
+  bio: "Creative engineers and data scientists building a world where you can belong anywhere."
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/DEVO_devteam"
-    - label: "GitHub"
+    - label: "Github"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/DevoInc"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/company/devoinc/"
-footer:
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/DEVO_devteam"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/DevoInc"
-    - label: "LinkedIn"
+    - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/company/devoinc/"
 
@@ -93,14 +82,18 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      show_date: true
       comments: false
       share: true
       related: true
       search: true
+      header:
+        show_overlay_excerpt: false
 
 search: true
+include: ["_pages"]
 
-minimal_mistakes_skin: "mint" #"default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+minimal_mistakes_skin: "devo" #"default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 
 # Exclude from processing.
 # The following items will not be processed, by default.

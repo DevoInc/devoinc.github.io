@@ -11,10 +11,9 @@
 .search__toggle {
   margin-left: 1rem;
   margin-right: 1rem;
-  height: $nav-toggle-height;
   border: 0;
   outline: none;
-  color: $primary-color;
+  color: var(--rich-black);
   background-color: transparent;
   cursor: pointer;
   -webkit-transition: 0.2s;
@@ -98,9 +97,6 @@
       width: 75%;
     }
 
-    @include breakpoint($x-large) {
-      width: 50%;
-    }
   }
 
   .archive__item-title {
@@ -110,6 +106,7 @@
   .archive__item-excerpt {
     margin-bottom: 0;
   }
+
 }
 
 /* Algolia search */

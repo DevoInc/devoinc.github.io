@@ -3,13 +3,13 @@
    ========================================================================== */
 
 .archive {
-  margin-top: 1em;
   margin-bottom: 2em;
 
   @include breakpoint($large) {
     float: right;
     width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: $right-sidebar-width-narrow;
+    //padding-right: $right-sidebar-width-narrow;
+    padding-right:0 !important;
   }
 
   @include breakpoint($x-large) {
@@ -20,23 +20,51 @@
 
 .archive__item {
   position: relative;
+  --clr-section-title: #000;
+  background-color: #fff;
+  border: 0.5px solid var(--medium-gray);
+  box-shadow: 0 2.5px 6px rgba(0, 0, 0, .10);
+  padding: 20px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  transition: transform .3s ease-in-out;
 
   a {
     position: relative;
     z-index: 10;
+    color: var(--rich-black);
   }
 
   a[rel="permalink"] {
     position: static;
   }
+  &:hover {
+    transform: scale(1.0115);
+  }
+}
+
+.archive__item__inner {
+  margin-right: 20px;
+}
+
+.archive__item-category {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brown-grey);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
 }
 
 .archive__subtitle {
   margin: 1.414em 0 0.5em;
   padding-bottom: 0.5em;
-  font-size: $type-size-5;
-  color: $muted-text-color;
-  border-bottom: 1px solid $border-color;
+  font-size: 16px;
+  font-weight: var(--font-weight-semi);
+  text-transform: uppercase;
+  color: var(--medium-dark-gray);
+  line-height: 1.4;
 
   + .list__item .archive__item-title {
     margin-top: 0.5em;
@@ -44,6 +72,7 @@
 }
 
 .archive__item-title {
+  margin-top: 0;
   margin-bottom: 0.25em;
   font-family: $sans-serif-narrow;
   line-height: initial;
@@ -86,6 +115,9 @@
 }
 
 .archive__item-teaser {
+  flex-shrink: 0;
+  width: 200px;
+  height: 137px;
   position: relative;
   border-radius: $border-radius;
   overflow: hidden;
@@ -145,6 +177,30 @@
 
     @include breakpoint($x-large) {
       margin-right: -1 * $right-sidebar-width;
+    }
+  }
+}
+
+.page__related {
+  .grid__wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    .grid__item {
+      .archive__item {
+        justify-content: flex-start;
+        height: 100%;
+        .archive__item__inner {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          .page__meta {
+            margin-top: auto;
+            margin-bottom: 0;
+            min-height: 60px;
+          }
+        }
+      }
     }
   }
 }

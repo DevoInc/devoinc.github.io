@@ -51,8 +51,9 @@
      ========================================================================== */
 
 .pagination {
-  @include clearfix();
   float: left;
+  display: flex;
+  justify-content: flex-end;
   margin-top: 1em;
   padding-top: 1em;
   width: 100%;
@@ -80,17 +81,17 @@
       text-align: center;
       text-decoration: none;
       color: $muted-text-color;
-      border: 1px solid mix(#000, $border-color, 25%);
       border-radius: 0;
 
       &:hover {
-        color: $link-color-hover;
+        color: var(--rich-black);
+        background: var(--lighter-gray);
       }
 
       &.current,
       &.current.disabled {
         color: #fff;
-        background: $primary-color;
+        background: var(--rich-black);
       }
 
       &.disabled {
@@ -102,61 +103,77 @@
 
     &:first-child {
       margin-left: 0;
-
-      a {
-        border-top-left-radius: $border-radius;
-        border-bottom-left-radius: $border-radius;
-      }
-    }
-
-    &:last-child {
-      a {
-        border-top-right-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
-      }
     }
   }
 
   /* next/previous buttons */
+
   &--pager {
-    display: block;
-    padding: 1em 2em;
+    display: flex;
+    align-items: center;
     float: left;
-    width: 50%;
     font-family: $sans-serif;
-    font-size: $type-size-5;
+    font-size: $type-size-6;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    color: $muted-text-color;
-    border: 1px solid mix(#000, $border-color, 25%);
-    border-radius: $border-radius;
+    color: var(--rich-black);
 
-    &:hover {
-      @include yiq-contrasted($muted-text-color);
+    &:visited  {
+      color: var(--rich-black);
+    }
+
+    &:after {
+      content: "";
+      background-image: url('/assets/images/devo-theme/arrow_forward-24px-white.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 65%;
+      width: 22px;
+      height: 22px;
+      background-color: var(--rich-black);
+      transition: transform .3s ease-in-out;
     }
 
     &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      flex-direction: row-reverse;
+      &:after {
+        transform: rotate(180deg);
+        margin-right: 12px;
+      }
+      &:hover:after {
+        transform: rotate(180deg) translateX(6px);
+      }
     }
 
     &:last-child {
-      margin-left: -1px;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      &:after {
+        margin-left: 12px;
+      }
+      &:hover:after {
+        transform: translateX(6px);
+      }
     }
 
     &.disabled {
       color: rgba($muted-text-color, 0.5);
       pointer-events: none;
       cursor: not-allowed;
+      &:after {
+        background-color: rgba($muted-text-color, 0.5);
+      }
     }
   }
 }
 
+.page__meta + .pagination {
+  justify-content: space-between;
+  margin: 32px 0 0 0;
+  padding: 16px 0 0 0;
+  border-top: 1px solid var(--rich-black);
+}
+
 .page__content + .pagination,
-.page__meta + .pagination,
 .page__share + .pagination,
 .page__comments + .pagination {
   margin-top: 2em;
@@ -176,31 +193,41 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-height: $nav-height;
-  background: $background-color;
 
   a {
     display: block;
-    margin: 0 1rem;
-    color: $masthead-link-color;
+    color: var(--rich-black);
     text-decoration: none;
-    -webkit-transition: none;
     transition: none;
+    border: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: var(--font-weight-semi);
 
     &:hover {
-      color: $masthead-link-color-hover;
+      //color: $masthead-link-color-hover;
     }
 
     &.site-logo {
       margin-left: 0;
-      margin-right: 0.5rem;
+      padding-right: 16px;
+      margin-right: 16px;
+      border-right: 1px solid var(--medium-dark-gray);
+
     }
 
     &.site-title {
+      color: var(--medium-dark-gray);
+      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 1.45px;
       margin-left: 0;
+      b {
+        font-weight: 900;
+      }
     }
   }
-  
+
   img{
     -webkit-transition: none;
     transition: none;
@@ -241,7 +268,7 @@
         content: "";
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -2px;
         height: 4px;
         background: $primary-color;
         width: 100%;
@@ -506,18 +533,16 @@
 .toc {
   font-family: $sans-serif-narrow;
   color: $gray;
-  background-color: $background-color;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  -webkit-box-shadow: $box-shadow;
-  box-shadow: $box-shadow;
+  background: #f9f9f9;
 
   .nav__title {
     color: #fff;
     font-size: $type-size-6;
-    background: $primary-color;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    background: var(--dark-gray);
+    i {
+      margin-right: 8px;
+      color: var(--medium-gray);
+    }
   }
 
   // Scrollspy marks toc items as .active when they are in focus
@@ -532,6 +557,8 @@
   width: 100%;
   list-style: none;
   font-size: $type-size-6;
+  border-radius: 4px;
+  overflow: hidden;
 
   @include breakpoint($large) {
     font-size: $type-size-7;
@@ -539,11 +566,10 @@
 
   a {
     display: block;
-    padding: 0.25rem 0.75rem;
+    padding: 0.50rem 0.75rem;
     color: $muted-text-color;
     font-weight: bold;
     line-height: 1.5;
-    border-bottom: 1px solid $border-color;
 
     &:hover {
       color: $text-color;

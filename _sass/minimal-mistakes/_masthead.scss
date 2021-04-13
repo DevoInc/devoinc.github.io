@@ -3,19 +3,23 @@
    ========================================================================== */
 
 .masthead {
-  position: relative;
-  border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  border: none;
   -webkit-animation: $intro-transition;
   animation: $intro-transition;
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
   z-index: 20;
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12);
+
 
   &__inner-wrap {
     @include clearfix;
     margin-left: auto;
     margin-right: auto;
-    padding: 1em;
+    padding: 12px 1em;
     max-width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -40,6 +44,7 @@
 }
 
 .site-logo img {
+  width: 96px;
   max-height: 2rem;
 }
 
@@ -85,6 +90,9 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  &:not(:last-child) {
+    margin-right: 24px;
+  }
 
   &--lg {
     padding-right: 2em;
