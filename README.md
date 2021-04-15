@@ -29,7 +29,7 @@ This should only be done once.
 2. On this folder, run `bundle add webrick`. In fact this is only needed if using Ruby 3, but shouldn't hurt in other cases.
 
 ##### Start local Jekyll
-On this folder, run ```jekyll serve```
+On this folder, run `jekyll serve` (or perhaps `bundle exec jekyll serve`)
 
 ### Open the blog
 After a while, the console will said something like:
