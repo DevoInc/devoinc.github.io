@@ -66,6 +66,8 @@ plugins:
   - jemoji
 #jekyll-include-cache is, at least, used by mmistakes/minimal-mistakes
   - jekyll-include-cache
+  - jekyll-gist
+  - jekyll-paginate
 
 jekyll-mentions:
   base_url: https://twitter.com
