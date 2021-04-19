@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Devo skin
+   ========================================================================== */
+
+/*
+   Root variables from Devo Website
+   ========================================================================== */
+
+:root {
+  --line-height: 1.52;
+  --font-size-body: $type-size-5;
+  --font-size-regular: $type-size-5_5;
+  --font-size-stat: 6.4rem;
+  --font-size-small: $type-size-6;
+  --font-size-x-small: $type-size-7;
+  --font-size-blog: $type-size-4_5;
+  --page-title: $type-size-1;
+  --section-title: $type-size-2;
+  --section-eyebrow: $type-size-5;
+  --featured-title: $type-size-3;
+  --cta-title: $type-size-2;
+  --item: $type-size-4;
+  --font-weight-light: 300;
+  --font-weight-regular: normal;
+  --font-weight-normal: 500;
+  --font-weight-semi: 600;
+}
+
+:root {
+  --light-blue: #05c3de;
+  --dark-blue: #004c97;
+  --medium-green: #d6e80f;
+  --white: #ffffff;
+  --lighter-gray: #f3f3f3;
+  --light-gray: #a6bbc8;
+  --medium-gray: #c1c1c1;
+  --medium-dark-gray: #333f48;
+  --dark-gray: #1d252d;
+  --rich-black: #000000;
+  --brown-grey: #818181;
+}
+
+/* Colors */
+$background-color: #fff !default;
+$text-color: #000 !default;
+$muted-text-color: #40514e !default;
+$primary-color: #D6E80F !default;
+$border-color: #A6BBC8 !default;
+$footer-background-color: #000000 !default;
+$link-color: #004c97 !default;
+$masthead-background-color: #fff !default;
+$masthead-link-color: $text-color !default;
+$masthead-link-color-hover: $text-color !default;
+$navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
+
+body {
+  font-family: "poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: var(--font-size-body);
+  color: var(--medium-dark-gray);
+  line-height: var(--line-height);
+  text-rendering: optimizeLegibility;
+}
+
+/* Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+$sans-serif: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+"Helvetica Neue", sans-serif !default;

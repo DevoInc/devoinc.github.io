@@ -1,0 +1,9 @@
+{% assign tags_sorted = page.tags | sort_natural %}
+
+  <p class="page__taxonomy">
+    <span itemprop="keywords">
+    {% for tag_word in tags_sorted %}
+      <a href="/tags/#{{ tag_word }}" class="page__taxonomy-item" rel="tag">{{ tag_word }}</a>
+    {% endfor %}
+    </span>
+  </p>
