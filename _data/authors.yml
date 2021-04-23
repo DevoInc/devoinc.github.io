@@ -12,5 +12,17 @@ Billy Rick:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/extravagantman"
+      
+Juanjo Madrigal:
+  name        : "Juanjo Madrigal"
+  bio         : "Maths + Computer Science + Cool Stuff"
+  avatar      : "/assets/images/authors/juanjo_madrigal_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:juanjo.madrigal@devo.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jxm_math"
 
 
