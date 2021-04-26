@@ -18,12 +18,12 @@ Galileo Galilei was born in Pisa in 1564 and lived a very adventurous life. He
 studied gravity, motion, inertia and astronomy among others. He was so important
 in his time that he even got invited to a barbecue that Pope Urban VIII was
 throwing in his honor. Ended up declining the invitation when he learnt that he
-was being invited as part of the menu. Of all his achievements, one was called
-to change the course of Humanity forever. Galileo is considered to be the father
-of the scientific method, a sort of magical recipe that empowers whoever makes
-proper use of it to tell the difference between true, proven facts and the rest.
-Our society, our technology and our progress is built upon a huge pile of
-scientific truths that have come out of Galileo's magic wand.
+was the main dish. Of all his achievements, one was called to change the course 
+of Humanity forever. Galileo is considered to be the father of the scientific
+method, a sort of magical recipe that empowers whoever makes proper use of it to
+tell the difference between true, proven facts and the rest. Our society, our
+technology and our progress is built upon a huge pile of scientific truths that 
+have come out of Galileo's magic wand.
 
 Here at Devo, we are premium users of the scientific method. Conclusions and
 proven facts can only be drawn after a meticulous and intensive session of
