@@ -2,9 +2,6 @@
 title:  "Galidevo Galilei"
 author: Diego Lafuente
 categories: 
-  - Javascript
-  - Python
-  - Renaissance
   - Troubleshooting
 last_modified_at: 2021-02-09T12:50:00-02:00
 type: posts
@@ -14,6 +11,7 @@ tags:
     - javascript
     - python
     - troubleshooting
+    - astronomy
 ---
 
 Galileo Galilei was born in Pisa in 1564 and lived a very adventurous life. He
@@ -72,30 +70,30 @@ only falls once.
 Devo is a complex creature, and only in the ingestion part, it has a few
 candidates to blame when something fails:
 
-  1.- The sender. It's usually a component called "the relay" (and written in
+1.- The sender. It's usually a component called "the relay" (and written in
 Java), but in this case, it was a custom Python sender built on top of our
 [python-sdk](https://github.com/DevoInc/python-sdk).
 
-  2.- Python itself. Compilers, interpreters, runtime environments and standard
+2.- Python itself. Compilers, interpreters, runtime environments and standard
 libraries are also programs, and therefore, they can contain bugs and errors.
 
-  3.- The load balancer (LB). Written in JavaScript and run with Nodejs, it
+3.- The load balancer (LB). Written in JavaScript and run with Nodejs, it
 receives the stream coming from the sender, frames the events and balances the
 load among the different syslog collectors.
 
-  4.- The Syslog Collectors (SCs), also written in JavaScript and run with
+4.- The Syslog Collectors (SCs), also written in JavaScript and run with
 Nodejs. They are in charge of manipulating the incoming events and saving them
 to disk.
 
-  5.- Nodejs, the JavaScript VM in charge of running the LB and the SCs.
+5.- Nodejs, the JavaScript VM in charge of running the LB and the SCs.
 
-  6.- Docker. Yet another layer on top of the OS. Prone to errors, as everything
+6.- Docker. Yet another layer on top of the OS. Prone to errors, as everything
 else.
 
-  7.- The infrastructure: the networks, the file system, the disks, the OS,
+7.- The infrastructure: the networks, the file system, the disks, the OS,
 etc...
 
-  8.- The relative position of Saturn and Uranus three days after the summer
+8.- The relative position of Saturn and Uranus three days after the summer
 solstice. It changes every year and it deeply affects the behaviour of our
 software.
 
@@ -150,9 +148,9 @@ after receiving an `error` event.
 
 This trace was a very good scapegoat because:
 
-  1.- Abrupt interruptions of TCP/TLS sockets can easily lead to data loss.
+1.- Abrupt interruptions of TCP/TLS sockets can easily lead to data loss.
 
-  2.- The error was triggered 3-4 times per experiment. One time per hour
+2.- The error was triggered 3-4 times per experiment. One time per hour
 because our python SDK recycles the TCP socket once per hour, and then one time
 at the end of the experiment. This would perfectly account for the amount of
 events lost (tens, sometimes hundreds).
@@ -196,21 +194,21 @@ We were doing neither of the above.
 assumed that the TLS layer was unwrapping itself, but there were still a few
 jungles to trim:
 
-  1.- Nodejs 8.x.x seemed pretty stable regardless of how abruptly connections
+1.- Nodejs 8.x.x seemed pretty stable regardless of how abruptly connections
 were closed from the client side. Nodejs 12.x.x behaved very
 non-deterministically. Is this something we should report to Nodejs?
 
-  2.- Even with Python closing the socket in a "timely fashion", the bytes
+2.- Even with Python closing the socket in a "timely fashion", the bytes
 received on the Nodejs side fluctuated a bit when the CPU was busy enough,
 although the ECONNRESET error never showed up. This, of course, only happened
 with Nodejs v12.x.x.
 
-  3.- Using Nodejs also to send events (closing the connections abruptly on
+3.- Using Nodejs also to send events (closing the connections abruptly on
 purpose) revealed an even weirder behaviour: sending and receiving with Nodejs
 12.19.0 seemed pretty seamless, but using Nodejs 12.18.4 to send triggered the
 `ECONNRESET` error consistently (!!!!).
 
-  4.- We wrote a simple sender in Java and we also reproduced the issue. If we
+4.- We wrote a simple sender in Java and we also reproduced the issue. If we
 closed the socket by the book, then everything went smooth, both with the
 receiver in Nodejs 8.x.x and Nodejs 12.x.x. But if instead of closing the socket
 politely we interrupted the thread that was running the connection, then Nodejs 
@@ -225,11 +223,11 @@ down the wire is a toilsome task. Especially when TLS is involved. Performing
 the Python experiments with the shark watching revealed that the amount of data
 interchanged when closing the socket was growing as we refined our manners:
 
-*   a simple `socket.close()` produced a minimal amount of data
+a) a simple `socket.close()` produced a minimal amount of data
     
-*   prefixing `socket.shutdown(how)` would make the data interchange grow
+b) prefixing `socket.shutdown(how)` would make the data interchange grow
     
-*   prefixing `socket.unwrap()` would make the amount of data reach its maximum
+c) prefixing `socket.unwrap()` would make the amount of data reach its maximum
     
 Using Nodejs on the sender side showed that closing the connection with Nodejs
 12.18.4 produced less data than doing it with Nodejs 12.19.0. The
@@ -288,7 +286,7 @@ but if it "sees" a lousy closure when there are still pending data, then it will
 signal the error. It's just an hypotheses, and proving it would require diving
 way deeper than we did.
 
-**The Matrix (1999)**
+# The Matrix (1999)
 
 Blue pill or red pill? Let’s have both of them. Or neither. Complex problems
 demand looking at them from every possible angle. From inside and outside the
@@ -300,27 +298,27 @@ are rather earned during the journey. And they are neither red nor blue. Most of
 the times they are grayish and they are called wisdom pills. Here are some we've
 collected lately. Use them at your own risk.
 
-- **Pill 1**: well designed experiments extend your knowledge. Lame or biased
+* **Pill 1**: well designed experiments extend your knowledge. Lame or biased
 experiments could reinforce your ignorance. Spend time thinking what you want to
 prove and how to do it.
 
-- **Pill 2**: truth is a very elusive concept. Paradoxically, now more than
+* **Pill 2**: truth is a very elusive concept. Paradoxically, now more than
 ever. In SW engineering, the truth is always written in the code.
 
-- **Pill 3**: if the code is too hard to read, consider it as a black box and
+* **Pill 3**: if the code is too hard to read, consider it as a black box and
 perform as many experiments as you need to understand it.
 
-- **Pill 4**: everything is code: our applications, the compilers/interpreters
+* **Pill 4**: everything is code: our applications, the compilers/interpreters
 that run them, the runtime environments, the OS libraries, the OS itself, etc...
 
-- **Pill 5**: everything has bugs, even the most proven SW.
+* **Pill 5**: everything has bugs, even the most proven SW.
 
-- **Pill 6**: when you start a murder investigation, do it with an open mind and
+* **Pill 6**: when you start a murder investigation, do it with an open mind and
 start over a blank page. Don't make any assumptions. Drop all your prejudices.
 
-- **Pill 7**: be a methodical and rigorous investigator. Support all your
+* **Pill 7**: be a methodical and rigorous investigator. Support all your
 findings with sound experiments. Then wash, rinse and repeat. 
 
-- **Pill 8**: if you happen to find a killer, report it.
+* **Pill 8**: if you happen to find a killer, report it.
 
-- **Pill 9**: if you happen to find a corpse, identify it before dumping it.
+* **Pill 9**: if you happen to find a corpse, identify it before dumping it.
