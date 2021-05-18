@@ -15,7 +15,7 @@ To know more about the customizations that can be done, go to:
 ## How to build the static site
 
 ```sh
-bundle exec jekyll serve
+bundle exec jekyll build
 ```
 
 The resulting static site will be under `docs/`.
