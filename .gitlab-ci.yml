@@ -1,7 +1,7 @@
 image: ruby:2.7
 
 variables:
-  - PAGES_REPO_NWO: git@gitlab.devotools.com:rad/data-retrieval/talks-and-blog/blog.git
+  PAGES_REPO_NWO: git@gitlab.devotools.com:rad/data-retrieval/talks-and-blog/blog.git
 
 workflow:
   rules:
