@@ -1,7 +1,7 @@
 Billy Rick:
   name        : "Billy Rick"
   bio         : "What do you want, jewels? I am a very extravagant man."
-  avatar      : "/assets/images/authors/rick_avatar.jpg"
+  avatar      : "assets/images/authors/rick_avatar.jpg"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -20,3 +20,4 @@ Diego Lafuente:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:diego.lafuente@devo.com"
+
