@@ -18,7 +18,7 @@ before_script:
 pages:
   stage: deploy
   script:
-    - bundle exec jekyll build -d public
+    - bundle exec jekyll build --config _config.yml,config_test.yml -d public
   artifacts:
     paths:
       - public
@@ -28,7 +28,7 @@ pages:
 test:
   stage: test
   script:
-    - bundle exec jekyll build -d test
+    - bundle exec jekyll build --config _config.yml,config_test.yml -d test
   artifacts:
     paths:
       - test
