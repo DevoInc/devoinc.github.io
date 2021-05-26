@@ -18,8 +18,8 @@ before_script:
 pages:
   stage: deploy
   script:
-    #- bundle exec jekyll build --config _config.yml,config_test.yml -d public
-    - bundle exec jekyll build --baseurl=https://rad.pages.devotools.com/talks-and-blog/blog/ -d public
+    - bundle exec jekyll build --config _config.yml,config_test.yml -d public
+    #- bundle exec jekyll build --baseurl=https://rad.pages.devotools.com/talks-and-blog/blog/ -d public
   artifacts:
     paths:
       - public
