@@ -12,3 +12,12 @@ Billy Rick:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/extravagantman"
+Diego Lafuente:
+  name        : "Diego Lafuente"
+  bio         : "So long, and thanks for all the fish"
+  avatar      : "/assets/images/authors/diego_lafuente_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:diego.lafuente@devo.com"
+
