@@ -3,7 +3,7 @@ title:  "Galidevo Galilei"
 author: Diego Lafuente
 categories: 
   - Troubleshooting
-last_modified_at: 2021-02-09T12:50:00-02:00
+last_modified_at: 2021-05-29T05:50:00Z
 type: posts
 header:
     teaser: /assets/images/posts/galidevo_galilei/teaser.jpg
