@@ -14,11 +14,31 @@ To know more about the customizations that can be done, go to:
 
 ## How to build the static site
 
+If you have Jekyll installed locally (see [the official doc](https://jekyllrb.com/docs/installation/))
+you can execute:
+
 ```sh
 bundle exec jekyll build
 ```
 
+Otherwhise you can do it with docker.
+It will be a little bit slower, but you don't need to modify your local machine:
+
+```sh
+docker run \
+  -it \
+  --rm \
+  --volume="$PWD:/srv/jekyll" \
+  jekyll/jekyll:3.8 jekyll build
+```
+
 The resulting static site will be under `docs/`.
+
+## How to publish on GitHub
+
+The blog uses some plugins that are not supported by GitHub pages.
+Therefore, we need to build Jekyll pages locally and then commit the `docs/`
+directory on each modification.
 
 ## How to run locally
 
