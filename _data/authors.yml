@@ -1,7 +1,7 @@
 Billy Rick:
   name        : "Billy Rick"
   bio         : "What do you want, jewels? I am a very extravagant man."
-  avatar      : "/assets/images/authors/rick_avatar.jpg"
+  avatar      : "assets/images/authors/rick_avatar.jpg"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -12,6 +12,15 @@ Billy Rick:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/extravagantman"
+
+Diego Lafuente:
+  name        : "Diego Lafuente"
+  bio         : "So long, and thanks for all the fish"
+  avatar      : "/assets/images/authors/diego_lafuente_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:diego.lafuente@devo.com"
       
 Juanjo Madrigal:
   name        : "Juanjo Madrigal"
@@ -24,5 +33,4 @@ Juanjo Madrigal:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/jxm_math"
-
 
