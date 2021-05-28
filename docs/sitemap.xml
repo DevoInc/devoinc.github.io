@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://0.0.0.0:4000/troubleshooting/2021/02/09/galidevo-galilei.html</loc>
-<lastmod>2021-02-09T08:50:00-06:00</lastmod>
+<loc>https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei.html</loc>
+<lastmod>2021-05-29T00:50:00-05:00</lastmod>
 </url>
 <url>
-<loc>http://0.0.0.0:4000/about/</loc>
+<loc>https://devoinc.github.io/about/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:4000/categories/</loc>
+<loc>https://devoinc.github.io/categories/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:4000/</loc>
+<loc>https://devoinc.github.io/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:4000/tags/</loc>
+<loc>https://devoinc.github.io/tags/</loc>
 </url>
 <url>
-<loc>http://0.0.0.0:4000/year-archive/</loc>
+<loc>https://devoinc.github.io/year-archive/</loc>
 </url>
 </urlset>
