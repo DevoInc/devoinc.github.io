@@ -11,6 +11,7 @@ header:
 tags:
     - java
     - inheritance
+classes: wide
 ---
 
 Castings in Java are considered a bad practice.
