@@ -19,3 +19,12 @@ Juanjo Madrigal:
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/jxm_math"
 
+Aurelio Gamero:
+  name        : "Aurelio Gamero"
+  bio         : "If it doesn't work, it doesn't matter how pretty it is"
+  avatar      : "/assets/images/authors/aurelio_gamero_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:aurelio.gamero@devo.com"
+

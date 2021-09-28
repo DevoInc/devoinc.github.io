@@ -1,4 +1,166 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://devoinc.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://devoinc.github.io/" rel="alternate" type="text/html" /><updated>2021-06-29T06:36:15-05:00</updated><id>https://devoinc.github.io/feed.xml</id><title type="html">Engineering Blog</title><subtitle></subtitle><author><name>Devo dev team</name></author><entry><title type="html">Polymorphic Fixpoints: get rid of inheritance castings!</title><link href="https://devoinc.github.io/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings.html" rel="alternate" type="text/html" title="Polymorphic Fixpoints: get rid of inheritance castings!" /><published>2021-06-29T00:00:00-05:00</published><updated>2021-06-29T11:55:00-05:00</updated><id>https://devoinc.github.io/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings</id><content type="html" xml:base="https://devoinc.github.io/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings.html">&lt;p&gt;Castings in Java are considered a bad practice.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://devoinc.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://devoinc.github.io/" rel="alternate" type="text/html" /><updated>2021-09-27T09:57:26+02:00</updated><id>https://devoinc.github.io/feed.xml</id><title type="html">Engineering Blog</title><subtitle></subtitle><author><name>Devo dev team</name></author><entry><title type="html">My brand, my ~~rules~~ tokens</title><link href="https://devoinc.github.io/branding/2021/08/20/my-brand-my-tokens.html" rel="alternate" type="text/html" title="My brand, my ~~rules~~ tokens" /><published>2021-08-20T00:00:00+02:00</published><updated>2021-08-20T10:00:00+02:00</updated><id>https://devoinc.github.io/branding/2021/08/20/my-brand-my-tokens</id><content type="html" xml:base="https://devoinc.github.io/branding/2021/08/20/my-brand-my-tokens.html">&lt;p&gt;Brands have long ceased to be simply the advertised image of a company. Today 
+more than ever, brands interact with their customers in a digital way: social 
+networks, landing pages, email, etc., and maintaining a consistent appearance is 
+vital.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, digital product development teams are becoming larger and 
+more specialized, and it is no longer enough to keep the marketing and IT teams 
+synchronized with some corporate rules. Now they need specialized tools that 
+allow them to maintain a brand image consistent and, at the same time, allow 
+them reuse work.&lt;/p&gt;
+
+&lt;h1 id=&quot;lets-start-from-the-beginning&quot;&gt;Let’s start from the beginning&lt;/h1&gt;
+
+&lt;p&gt;Since its proposal in 1994 and its 
+&lt;a href=&quot;https://www.w3.org/TR/CSS1/&quot;&gt;initial release in 1996&lt;/a&gt;, Cascading Style
+Sheets (CSS) evolved from a static description of simple styles to being the key
+of modern web design. However, CSS was designed to list and specify the styles 
+used in a website and not as a programming language, therefore, its dynamic 
+characteristics are quite limited.&lt;/p&gt;
+
+&lt;p&gt;Reusing styles often means copy-pasting or changing parent-child relationships, 
+which can compromise the specificity of the selector. And the lack of variables 
+and functions to reuse parts of the code makes changing the same value in 
+multiple CSS files (such as primary color or font size) very difficult to 
+maintain and there is a high risk of sets the wrong values.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The preprocessors improved the developer experience, turning CSS into a full
+programming language.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To resolve these shortcomings, the CSS preprocessors such as SASS and LESS were
+created. The preprocessors improved the developer experience, turning CSS into a
+full programming language with new functionality like variables, nested
+selectors, functions, color operations, logical operators, imports, etc.
+sometimes with a CSS like syntax, which makes it more readable and easier to
+maintain.&lt;/p&gt;
+
+&lt;p&gt;Despite this new advantage, we still have a static code that, once processed and 
+loaded by the browser, can no longer be dynamically modified. This forces us to 
+contemplate all the variations that we want to have available by adding hundreds 
+of classes and modifiers that should be managed with media queries or changing 
+the tags’ classes through JavaScript.&lt;/p&gt;
+
+&lt;p&gt;In 2015, the &lt;em&gt;CSS Custom Properties for Cascading Variables Module Level 1&lt;/em&gt; 
+became a W3C Candidate Recommendation, introducing cascading variables that are 
+accepted by all CSS properties. This new feature might seem quite simple but 
+&lt;a href=&quot;https://drafts.csswg.org/css-variables&quot;&gt;it offers the ability to do many of the things&lt;/a&gt;
+that preprocessors used to do, and also enabled new workflows that were not 
+possible before.&lt;/p&gt;
+
+&lt;h1 id=&quot;design-systems-the-new-era&quot;&gt;Design Systems, the new era!&lt;/h1&gt;
+
+&lt;p&gt;Recently, a new concept is becoming popular in the UX and Web Development arena: 
+Design Systems.&lt;/p&gt;
+
+&lt;p&gt;Design Systems are tools that provide the essential infrastructure to guarantee
+design quality and development efficiency. They can range from a few concepts
+such as branded colors and typographies, to any element that defines the
+appearance of the application and its interaction with the user: components,
+templates, usability, tone of voice, etc.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Design Systems are tools that provide the essential infrastructure to
+guarantee design quality and development efficiency.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A good use of the Design Systems helps to improve production speed and 
+communication, facilitate consistency, simplify and scale the product, achieve 
+visual coherence, build new features more efficiently, keep more focus on UX, 
+bring clarity to developers, reuse code and incorporate new components easily.&lt;/p&gt;
+
+&lt;p&gt;The work of designers who create or contribute to a Design System should mimic
+the world of the developer, doing more technical work and ensuring that they are
+designing in a reusable and systematic way. There are several areas where
+designers can contribute: Design Tokens, Components Libraries, Documentation, 
+etc., but from now we are going to focus on Design Tokens.&lt;/p&gt;
+
+&lt;h1 id=&quot;configuring-your-digital-brand-design&quot;&gt;Configuring your digital brand Design&lt;/h1&gt;
+
+&lt;p&gt;Tokens are values that define features such as typography, colors, icons, 
+spaces, etc. that will then be used to configure the styles of the application. 
+They are the essence of the brand in a digital context. Design Tokens are 
+intended to be flexible and cross-platform, therefore building it in a common 
+language is paramount.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Figma and Adobe XD have empowered developers to link their code with the 
+designers’ prototypes in a very direct way to keep a single source of truth.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;At the same time that designers have been delving into the design of components
+and templates in an increasingly precise and collaborative way, new applications
+such as &lt;a href=&quot;https://www.figma.com/&quot;&gt;Figma&lt;/a&gt;
+and &lt;a href=&quot;https://www.adobe.com/es/products/xd.html&quot;&gt;Adobe XD&lt;/a&gt; have also appeared and
+empowered developers to link their code with the designers’ prototypes in a very
+direct way.&lt;/p&gt;
+
+&lt;p&gt;With applications like &lt;a href=&quot;https://natebaldw.in/dragoman/&quot;&gt;Dragoman&lt;/a&gt;,
+&lt;a href=&quot;https://amzn.github.io/style-dictionary&quot;&gt;Style Dictionary&lt;/a&gt; or the
+&lt;a href=&quot;https://www.adobe.com/products/xd/learn/design-systems/cloud-libraries/vscode-extension.html&quot;&gt;Adobe XD extension for VSC&lt;/a&gt;, 
+the values used on UI sketches for color, typography, or spacing can be 
+extracted as SCSS variables, JS variables, JSON, custom properties (CSS 
+variables), or any other custom format. This allows maintaining a single source 
+of truth from designs to the variables that configure the application’s style 
+sheets, regardless of the language chosen to generate them.&lt;/p&gt;
+
+&lt;h1 id=&quot;lets-rock&quot;&gt;Let’s rock!&lt;/h1&gt;
+
+&lt;p&gt;Design Systems help organizations to maintain design coherence among all their 
+front-end applications by sharing the same Design Tokens across the company.&lt;/p&gt;
+
+&lt;p&gt;A way to use these Design Tokens is to incorporate them as a dependency. This
+method, which usually involves a version control, makes it easier to manage 
+changes in the code and helps to avoid errors when CSS files are preprocessed 
+(with SASS or LESS) or exported from JavaScript (with any ‘CSS-in-JS’ technique).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Over time, all the effort that has been invested to keep the organization’s 
+brand ends up in vain.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;However, this strategy makes the applications use, gradually, more outdated
+versions of the libraries than without a scrupulous dependency updating. Over 
+time, all the effort that has been invested to keep the organization’s brand 
+ends up in vain, because a design requirement such as a color change or a logo 
+update can take days, weeks or months to be adopted by all the applications.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/my_brand_my_tokens/dependencies.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;How can we take full advantage of Design System?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We will have dynamic styles that can be adapted to different color settings,
+screen size, device, etc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As previously described, since 2015 Cascading Style Sheets incorporate Custom
+Properties that allow us to use CSS variables directly from the browser itself. 
+On the other hand, we have a cross-project that can transform Design Tokens into 
+Custom Properties that can be load in the browser before the own applications’ 
+style sheets.&lt;/p&gt;
+
+&lt;p&gt;With that environment, we will have dynamic styles sheets that may adapt all his 
+colors, sizes, fonts, etc. from a few initial variables that define the primary 
+or most abstract level of the brand. And the rest of the components and 
+applications are going to configure his specific variations extending from there.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/my_brand_my_tokens/fundations.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And the amazing thing is that it is also possible to reset variables, for 
+example within media queries, and have those new cascade values everywhere. 
+Something that is not possible with preprocessor variables. 
+&lt;a href=&quot;https://codepen.io/chriscoyier/pen/ORdLvq&quot;&gt;Check out this example&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/my_brand_my_tokens/grid.gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are still not impressed, 
+&lt;a href=&quot;https://googlechrome.github.io/samples/css-custom-properties/index.html&quot;&gt;take a look at another demo&lt;/a&gt;
+where, using JavaScript to reset some CSS variables, the appearance of the page
+changes on the fly.&lt;/p&gt;
+
+&lt;p&gt;Happy coding!&lt;/p&gt;</content><author><name>Aurelio Gamero</name></author><category term="Branding" /><category term="CSS Custom Properties" /><category term="Preprocessors" /><category term="Design Systems" /><category term="Design Tokens" /><summary type="html">Brands have long ceased to be simply the advertised image of a company. Today more than ever, brands interact with their customers in a digital way: social networks, landing pages, email, etc., and maintaining a consistent appearance is vital.</summary></entry><entry><title type="html">Polymorphic Fixpoints: get rid of inheritance castings!</title><link href="https://devoinc.github.io/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings.html" rel="alternate" type="text/html" title="Polymorphic Fixpoints: get rid of inheritance castings!" /><published>2021-06-29T00:00:00+02:00</published><updated>2021-06-29T18:55:00+02:00</updated><id>https://devoinc.github.io/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings</id><content type="html" xml:base="https://devoinc.github.io/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings.html">&lt;p&gt;Castings in Java are considered a bad practice.&lt;/p&gt;
 
 &lt;p&gt;Java’s strong static typing is a powerful compile-time safeguard. 
 It checks that every method receives and returns objects with the features 
@@ -602,7 +764,7 @@ at any time&lt;/p&gt;
 &lt;p&gt;To sum up: the polymorphic fixpoint trick is very useful to &lt;strong&gt;avoid castings&lt;/strong&gt; 
 in situations where a behavior is to be extended by 
 several different implementations but needs to 
-&lt;strong&gt;refer to the implementations themselves&lt;/strong&gt;.&lt;/p&gt;</content><author><name>Juanjo Madrigal</name></author><category term="Java" /><category term="java" /><category term="inheritance" /><summary type="html">Castings in Java are considered a bad practice.</summary></entry><entry><title type="html">Galidevo Galilei</title><link href="https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei.html" rel="alternate" type="text/html" title="Galidevo Galilei" /><published>2021-05-28T00:00:00-05:00</published><updated>2021-05-29T00:50:00-05:00</updated><id>https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei</id><content type="html" xml:base="https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei.html">&lt;p&gt;Galileo Galilei was born in Pisa in 1564 and lived a very adventurous life. He
+&lt;strong&gt;refer to the implementations themselves&lt;/strong&gt;.&lt;/p&gt;</content><author><name>Juanjo Madrigal</name></author><category term="Java" /><category term="java" /><category term="inheritance" /><summary type="html">Castings in Java are considered a bad practice.</summary></entry><entry><title type="html">Galidevo Galilei</title><link href="https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei.html" rel="alternate" type="text/html" title="Galidevo Galilei" /><published>2021-05-28T00:00:00+02:00</published><updated>2021-05-29T07:50:00+02:00</updated><id>https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei</id><content type="html" xml:base="https://devoinc.github.io/troubleshooting/2021/05/28/galidevo-galilei.html">&lt;p&gt;Galileo Galilei was born in Pisa in 1564 and lived a very adventurous life. He
 studied gravity, motion, inertia and astronomy among others. He was so important
 in his time that he even got invited to a barbecue that Pope Urban VIII was
 throwing in his honor. Ended up declining the invitation when he learnt that he
