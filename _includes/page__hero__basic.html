@@ -52,7 +52,7 @@
 
     {% if page.header.teaser %}
     <div class="page__hero__teaser">
-         <img src="{{ page.header.teaser }}">
+         <img src="{{ page.header.teaser | relative_url }}">
     </div>
     {% endif %}
 

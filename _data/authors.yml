@@ -1,14 +1,29 @@
-Billy Rick:
-  name        : "Billy Rick"
-  bio         : "What do you want, jewels? I am a very extravagant man."
-  avatar      : "assets/images/authors/rick_avatar.jpg"
+Diego Lafuente:
+  name        : "Diego Lafuente"
+  bio         : "So long, and thanks for all the fish"
+  avatar      : "/assets/images/authors/diego_lafuente_avatar.png"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:billyrick@rick.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://thewhip.com"
+      url: "mailto:diego.lafuente@devo.com"
+      
+Juanjo Madrigal:
+  name        : "Juanjo Madrigal"
+  bio         : "Maths + Computer Science + Cool Stuff"
+  avatar      : "/assets/images/authors/juanjo_madrigal_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:juanjo.madrigal@devo.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/extravagantman"
+      url: "https://twitter.com/jxm_math"
+
+Aurelio Gamero:
+  name        : "Aurelio Gamero"
+  bio         : "If it doesn't work, it doesn't matter how pretty it is"
+  avatar      : "/assets/images/authors/aurelio_gamero_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:aurelio.gamero@devo.com"
