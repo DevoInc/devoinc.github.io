@@ -10,4 +10,10 @@ var store = [{
         "tags": ["java","inheritance"],
         "url": "/java/2021/06/29/polymorphic-fixpoints-get-rid-inheritance-castings.html",
         "teaser": "/assets/images/posts/polymorphic_fixpoints/teaser.png"
+      },{
+        "title": "My brand, my ~~rules~~ tokens",
+        "excerpt":"Brands have long ceased to be simply the advertised image of a company. Today more than ever, brands interact with their customers in a digital way: social networks, landing pages, email, etc., and maintaining a consistent appearance is vital. On the other hand, digital product development teams are becoming larger...","categories": ["Branding"],
+        "tags": ["CSS Custom Properties","Preprocessors","Design Systems","Design Tokens"],
+        "url": "/branding/2021/09/29/my-brand-my-tokens.html",
+        "teaser": "/assets/images/posts/my_brand_my_tokens/teaser.png"
       }]
