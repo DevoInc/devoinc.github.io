@@ -3,7 +3,7 @@ title:  "My brand, my ~~rules~~ tokens"
 author: Aurelio Gamero  
 categories:
   - Branding  
-last_modified_at: 2021-08-20T08:00:00Z  
+last_modified_at: 2021-09-29T10:40:31Z
 type: posts  
 header:  
     teaser: /assets/images/posts/my_brand_my_tokens/teaser.png 
