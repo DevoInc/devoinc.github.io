@@ -27,18 +27,18 @@ name: Devo Engineering Blog
 description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://devoinc.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: DEVO_devteam
+twitter_username: devo_inc
 github_username:  devoinc
 repository: "DevoInc/devoinc.github.io.git"
 
 
 # For jekyll-seo-tag
 twitter:
-  username: DEVO_devteam
+  username: devo_inc
   card: summary
 social:
   links:
-    - "https://twitter.com/DEVO_devteam"
+    - "https://twitter.com/devo_inc"
     - "https://www.linkedin.com/company/devoinc/"
     -
 author:
@@ -48,7 +48,7 @@ author:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/DEVO_devteam"
+      url: "https://twitter.com/devo_inc"
     - label: "Github"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/DevoInc"
