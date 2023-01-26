@@ -16,4 +16,10 @@ var store = [{
         "tags": ["CSS Custom Properties","Preprocessors","Design Systems","Design Tokens"],
         "url": "/branding/2021/09/29/my-brand-my-tokens.html",
         "teaser": "/assets/images/posts/my_brand_my_tokens/teaser.png"
+      },{
+        "title": "Node.js &amp; npm best practices",
+        "excerpt":"Perhaps you would be surprised to learn that here at Devo we were early adopters of Node.js. Two of our core propositions and unique features from day one are raw volume of data, and speed in retrieval and processing. Customers know that well: blazingly fast queries over huge data lakes...","categories": ["Node.js"],
+        "tags": ["JavaScript","JS","Node.js","npm","best practices"],
+        "url": "/node.js/2023/11/15/nodejs-and-npm-best-practices.html",
+        "teaser": "/assets/images/posts/nodejs-and-npm-best-practices/teaser.jpeg"
       }]

@@ -27,3 +27,15 @@ Aurelio Gamero:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:aurelio.gamero@devo.com"
+
+Antonio Olmo Titos:
+  name: "Antonio Olmo Titos"
+  bio: "Senior software engineer, front-end architecture chapter"
+  avatar: "/assets/images/authors/antonio-olmo.jpeg"
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/aolmotitos/"
+    - label: "E-mail"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:antonio.olmo@devo.com"

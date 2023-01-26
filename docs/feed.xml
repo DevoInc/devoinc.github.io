@@ -1,4 +1,192 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://devoinc.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://devoinc.github.io/" rel="alternate" type="text/html" /><updated>2023-01-05T09:33:35+01:00</updated><id>https://devoinc.github.io/feed.xml</id><title type="html">Engineering Blog</title><subtitle></subtitle><author><name>Devo dev team</name></author><entry><title type="html">My brand, my ~~rules~~ tokens</title><link href="https://devoinc.github.io/branding/2021/09/29/my-brand-my-tokens.html" rel="alternate" type="text/html" title="My brand, my ~~rules~~ tokens" /><published>2021-09-29T00:00:00+02:00</published><updated>2021-09-29T12:40:31+02:00</updated><id>https://devoinc.github.io/branding/2021/09/29/my-brand-my-tokens</id><content type="html" xml:base="https://devoinc.github.io/branding/2021/09/29/my-brand-my-tokens.html">&lt;p&gt;Brands have long ceased to be simply the advertised image of a company. Today 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://devoinc.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://devoinc.github.io/" rel="alternate" type="text/html" /><updated>2023-11-15T21:47:09+01:00</updated><id>https://devoinc.github.io/feed.xml</id><title type="html">Engineering Blog</title><subtitle></subtitle><author><name>Devo dev team</name></author><entry><title type="html">Node.js &amp;amp; npm best practices</title><link href="https://devoinc.github.io/node.js/2023/11/15/nodejs-and-npm-best-practices.html" rel="alternate" type="text/html" title="Node.js &amp;amp; npm best practices" /><published>2023-11-15T00:00:00+01:00</published><updated>2023-11-15T01:00:00+01:00</updated><id>https://devoinc.github.io/node.js/2023/11/15/nodejs-and-npm-best-practices</id><content type="html" xml:base="https://devoinc.github.io/node.js/2023/11/15/nodejs-and-npm-best-practices.html">&lt;p&gt;Perhaps you would be surprised to learn that here at Devo we were early adopters of &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node.js&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Two of our core propositions and unique features from day one are raw volume of data, and speed in retrieval and processing.
+Customers know that well: blazingly fast queries over huge data lakes is one of the features that set us
+apart from our competitors.
+At the same time, the JavaScript ecosystem is not widely praised for its performance — admittedly,
+there are languages that have been much “closer to the metal” for ages.
+Those other platforms are sometimes easier to fine-tune, and organisations with stringent performance requirements have been
+squeezing every last byte and millisecond out of them for a long time now.&lt;/p&gt;
+
+&lt;p&gt;However, we have been defending JS as a language, and Node.js as an environment, from the early days of the company.
+And we are still doing so!&lt;/p&gt;
+
+&lt;p&gt;Turns out that Node.js and &lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt; can form the basis for a friendly toolkit,
+and also be extensible and support efficient software.&lt;/p&gt;
+
+&lt;p&gt;In this post we share some of the realisations and tips that we have discovered and adopted along the way.&lt;/p&gt;
+
+&lt;h2 id=&quot;local-config-files-are-your-friends&quot;&gt;Local config files are your friends&lt;/h2&gt;
+
+&lt;p&gt;We rely extensively on &lt;a href=&quot;https://docs.npmjs.com/cli/v10/configuring-npm/npmrc&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.npmrc&lt;/code&gt;&lt;/a&gt;
+and &lt;a href=&quot;https://github.com/nvm-sh/nvm#nvmrc&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.nvmrc&lt;/code&gt;&lt;/a&gt;;
+either locally (sitting at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; in each of our workstations), or
+&lt;a href=&quot;https://github.com/DevoInc/genesys-ui/blob/master/.nvmrc&quot;&gt;shared with all other contributors and kept under version control&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Depending on the nature of your project (proprietary or open source, on an internal repository or
+&lt;a href=&quot;https://github.com/orgs/DevoInc/repositories&quot;&gt;public on GitHub&lt;/a&gt;)
+you will want your npm dependencies to be fetched from one source or another — and
+the npm packages you produce to be published to the right place.
+In fact, the consequences of using one endpoint instead of another might be dire (imagine publishing
+your precious npm package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@corp/internal-trading-strategy&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npmjs.com&lt;/code&gt; by mistake).
+Here’s where an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.npmrc&lt;/code&gt; file comes handy, as it lets you point to a specific set of npm repositories,
+overriding global configuration, and even temporarily store your authentication credentials for
+those services.&lt;/p&gt;
+
+&lt;p&gt;With regards to &lt;a href=&quot;https://github.com/nvm-sh/nvm&quot;&gt;nvm&lt;/a&gt;, suffice to say that we maintain dozens of npm-based
+projects with a wide range of requirements.
+At any given point in time our engineers are working with several different versions of Node.js and npm,
+so making sure that they always use the right one for each project saves time and prevents
+mysterious build errors.&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-neglect-pipelines-and-know-when-things-are-broken&quot;&gt;Don’t neglect pipelines and know when things are broken&lt;/h2&gt;
+
+&lt;p&gt;What developer doesn’t have the temptation to mute or simply ignore occasional failures of their
+Continuous Integration or Continuous Deployment builds?
+Sometimes overwhelmed by day-to-day work and more pressing issues, it’s difficult to pay attention
+to each and every failed build — not to mention to humble warnings.&lt;/p&gt;
+
+&lt;p&gt;However, we have found that striving to tend to those notifications pays in the long run.
+Our front-end teams do a deliberate effort to optimise the number of automated checks and
+to fine-tune the thresholds we set so that there are few false positives and errors are tackled.&lt;/p&gt;
+
+&lt;p&gt;It is not that time-consuming to spend ten minutes, every now and then, turning a few knobs and
+toggling some checkboxes.
+Let’s see an example.&lt;/p&gt;
+
+&lt;p&gt;A pipeline job may be temporarily broken for “good reasons”; those include transient
+misalignments between projects or dependencies, ongoing work on related pieces of software, and
+downtime from third-party services (like when a linter or a scanner is under maintenance).
+Most CI/CD tools provide syntax to keep on running a job that we accept may fail, so that the
+result of the whole process isn’t affected by that.
+See eg &lt;a href=&quot;https://docs.gitlab.com/ee/ci/yaml/#allow_failure&quot;&gt;GitLab’s CI &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allow_failure&lt;/code&gt; keyword&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Preventing false positives in that way increases signal-to-noise ratio and contributes to
+making actual problems more salient and therefore harder to ignore.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/nodejs-and-npm-best-practices/pipeline.webp&quot; alt=&quot;A pipeline!&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-be-afraid-to-experiment&quot;&gt;Don’t be afraid to experiment&lt;/h2&gt;
+
+&lt;p&gt;As you can see, npm and Node.js are at the root of our work with JavaScript.&lt;/p&gt;
+
+&lt;p&gt;In the last years we have also explored a few other platforms and dependency managers.
+Among those,
+&lt;a href=&quot;https://deno.com/&quot;&gt;Deno&lt;/a&gt;,
+&lt;a href=&quot;https://yarnpkg.com/&quot;&gt;Yarn&lt;/a&gt; or
+&lt;a href=&quot;https://pnpm.io/&quot;&gt;pnpm&lt;/a&gt;.
+Recently, we had been excited about the promises (no pun intended) made by
+&lt;a href=&quot;https://bun.sh/&quot;&gt;Bun&lt;/a&gt;, and the possibility that it alone could replace (and improve)
+a handful of items in our current tool chain.&lt;/p&gt;
+
+&lt;p&gt;Typically at Devo, some colleague conducts early experiments with a pet project of theirs
+or with some non-critical component.
+If their experience is positive, those results are usually shared with the front-end
+architecture chapter, and in turn publicised or even recommended to all other coders.&lt;/p&gt;
+
+&lt;p&gt;Other excellent tools that we introduced following that playbook are
+&lt;a href=&quot;https://stryker-mutator.io/&quot;&gt;StrykerJS&lt;/a&gt; for mutation testing,
+&lt;a href=&quot;https://www.npmjs.com/package/release-it&quot;&gt;release-it&lt;/a&gt; to streamline versioning and
+changelog editions, or
+&lt;a href=&quot;https://vitejs.dev/&quot;&gt;Vite&lt;/a&gt; for building.
+We switched from &lt;a href=&quot;https://lerna.js.org/&quot;&gt;Lerna&lt;/a&gt; to
+&lt;a href=&quot;https://docs.npmjs.com/cli/v10/using-npm/workspaces&quot;&gt;native monorepos with npm workspaces&lt;/a&gt;.
+And of course, we have moved more and more of our codebase to
+&lt;a href=&quot;https://www.typescriptlang.org/&quot;&gt;TypeScript&lt;/a&gt; following the strategy outlined above.&lt;/p&gt;
+
+&lt;h2 id=&quot;but-dont-chase-every-bright-shiny-object&quot;&gt;…but don’t chase every bright shiny object&lt;/h2&gt;
+
+&lt;p&gt;Memes abound about the insane cycle of hype in JS-land.
+We all know there is a kernel of truth to those funny images and blog posts: JavaScript is
+a tremendously popular programming language (somewhere between
+&lt;a href=&quot;https://survey.stackoverflow.co/2023/#section-most-popular-technologies-programming-scripting-and-markup-languages&quot;&gt;#1&lt;/a&gt;
+and &lt;a href=&quot;https://www.tiobe.com/tiobe-index/&quot;&gt;#6&lt;/a&gt;) which makes it very easy for anyone to
+develop and share anything from a tiny library to a gargantuan framework.
+It’s sometimes too easy to get excited about so many new techniques and thingies…
+most of which will be unmaintained in a year’s time.&lt;/p&gt;
+
+&lt;p&gt;At Devo, we try to strike a healthy balance between innovation and caution.
+Having a diverse enough team of programmers helps here, because a wide range of ages,
+backgrounds, interests and skill sets make for a better debate.
+All the tools mentioned in the previous paragraph were the result of lively conversations
+among engineers and of practical experimentation — not top-down
+impositions or the whim of anyone in particular.&lt;/p&gt;
+
+&lt;p&gt;👉 If you or your team are suffering from “JavaScript fatigue”, Axel Rauschmayer has
+&lt;a href=&quot;https://2ality.com/2016/02/js-fatigue-fatigue.html&quot;&gt;some useful tips&lt;/a&gt;, such as
+“wait for the critical mass” and “don’t use more than 1–2 new
+technologies per project”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/nodejs-and-npm-best-practices/bright-objects.jpeg&quot; alt=&quot;Some bright shiny objects&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;streamline-maintenance-tasks&quot;&gt;Streamline maintenance tasks&lt;/h2&gt;
+
+&lt;p&gt;With large enough codebases, keeping things tidy, clean and updated is a task in itself,
+something that could keep one person busy full time.
+JavaScript projects are no exception: if unmaintained, they rot and decay quicker than
+you can say “unsupported engine” or “critical vulnerability”.&lt;/p&gt;
+
+&lt;p&gt;For the purpose of this discussion, let’s break down “routine maintenance” into
+three different types of activities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Creating&lt;/em&gt; stuff.&lt;br /&gt;
+Examples: generate an artefact, publish a package, release a version.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Changing&lt;/em&gt; stuff.&lt;br /&gt;
+Examples: update dependencies, fix broken links, amend documentation.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Deleting&lt;/em&gt; stuff.&lt;br /&gt;
+Examples: remove unused dependencies, prune code that can’t be reached,
+ditch config files that aren’t useful any more.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first type of maintenance is usually achieved through test suites, documentation comments,
+programmatic generation of docs, and CI/CD.
+In an ideal world, no human should ever have to take care of that directly: a new commit
+being pushed, or the clock striking 3:00 AM, should trigger all changes necessary for the
+latest version to be linted, tested, built, packaged and deployed &lt;em&gt;automagically&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;What fewer JS programmers know is that many of the maintenance tasks in the second category
+(“changing stuff”) can be automated, too.&lt;/p&gt;
+
+&lt;p&gt;We are usually reluctant to let tools update npm dependencies on our behalf, and for good
+reasons: the most innocent-looking change in our dependency tree could break everything,
+and in principle there is no way to know.
+So, how could we entrust that delicate task to an unattended process?
+Enter packages
+&lt;a href=&quot;https://www.npmjs.com/package/npm-check-updates#doctor&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm-check-updates&lt;/code&gt; (in “doctor mode”)&lt;/a&gt;
+and
+&lt;a href=&quot;https://www.npmjs.com/package/updtr&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updtr&lt;/code&gt;&lt;/a&gt;.
+These two take care of upgrading all dependencies that can be upgraded,
+within the semver range specified in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt;, and (most importantly)
+are able to run an arbitrary npm script and use the result to decide whether
+each individual upgrade is feasible or not.&lt;/p&gt;
+
+&lt;p&gt;For instance:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx updtr &lt;span class=&quot;nt&quot;&gt;--test&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;npm t &amp;amp;&amp;amp; ./checks.sh &amp;amp;&amp;amp; npm run whatever-you-usually-do&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Voilà!&lt;/em&gt;
+Make that part or your scheduled pipeline, and see your dependencies always fresh
+(assuming that your test suites and your checks are good enough, that is!).&lt;/p&gt;
+
+&lt;p&gt;👉 We mentioned broken links above.
+For that, you could integrate the &lt;abbr title=&quot;World Wide Web Consortium&quot;&gt;W3C&lt;/abbr&gt;’s
+&lt;a href=&quot;https://github.com/w3c/link-checker&quot;&gt;Link Checker&lt;/a&gt; into your pipeline.&lt;/p&gt;
+
+&lt;p&gt;What about the third type of maintenance, “deleting stuff”?
+For unused code, there’s code coverage, and most teams use those metrics.
+For unused npm dependencies, something like
+&lt;a href=&quot;https://www.npmjs.com/package/npm-check&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm-check&lt;/code&gt;&lt;/a&gt; comes to the rescue:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx npm-check | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;notused?&apos;&lt;/span&gt; | rev | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;?&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f2&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos; &apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f1&lt;/span&gt; | rev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The one-liner above produces a list of packages that &lt;em&gt;probably&lt;/em&gt; aren’t used by
+your software any more.
+Make sure to review manually though, as there could be false positives;
+or, if you have enough confidence in your tests, automate the removal of
+those dependencies &lt;em&gt;iff&lt;/em&gt; that change doesn’t break the build.&lt;/p&gt;</content><author><name>Antonio Olmo Titos</name></author><category term="Node.js" /><category term="JavaScript" /><category term="JS" /><category term="Node.js" /><category term="npm" /><category term="best practices" /><summary type="html">Perhaps you would be surprised to learn that here at Devo we were early adopters of Node.js.</summary></entry><entry><title type="html">My brand, my ~~rules~~ tokens</title><link href="https://devoinc.github.io/branding/2021/09/29/my-brand-my-tokens.html" rel="alternate" type="text/html" title="My brand, my ~~rules~~ tokens" /><published>2021-09-29T00:00:00+02:00</published><updated>2021-09-29T12:40:31+02:00</updated><id>https://devoinc.github.io/branding/2021/09/29/my-brand-my-tokens</id><content type="html" xml:base="https://devoinc.github.io/branding/2021/09/29/my-brand-my-tokens.html">&lt;p&gt;Brands have long ceased to be simply the advertised image of a company. Today 
 more than ever, brands interact with their customers in a digital way: social 
 networks, landing pages, email, etc., and maintaining a consistent appearance is 
 vital.&lt;/p&gt;
@@ -376,7 +564,7 @@ and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BitMap co
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
   &lt;span class=&quot;c1&quot;&gt;// checking whether a region contains a point&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// BitMap does not implement it because it's not accurate enough&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// BitMap does not implement it because it&apos;s not accurate enough&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
   &lt;span class=&quot;c1&quot;&gt;// --------&lt;/span&gt;
