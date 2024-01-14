@@ -13,6 +13,7 @@ tags:
   - Node.js
   - npm
   - best practices
+classes: wide
 ---
 
 Perhaps you would be surprised to learn that here at Devo we were early adopters of [Node.js](https://nodejs.org/).
