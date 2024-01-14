@@ -39,3 +39,12 @@ Antonio Olmo Titos:
     - label: "E-mail"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:antonio.olmo@devo.com"
+
+Jorge Mayoral:
+  name        : "Jorge Luis Mayoral"
+  bio         : "Nothing is the force that renovates the world"
+  avatar      : "/assets/images/authors/jorge_mayoral_avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:jorge.mayoral@devo.com"
