@@ -1,5 +1,5 @@
 ---
-title:  "Recursion Schemes in Scala"
+title: "Recursion Schemes in Scala"
 author: Jorge Mayoral
 categories:
   - Scala
@@ -10,14 +10,11 @@ tags:
   - Scala
   - recursion
 classes: wide
-
 ---
 
 In this piece of work, I want to share some notions about recursion schemes. Recursion schemes are a paradigm based on the abstraction of the recursive steps and the base cases. I will try to provide some justifications about its utilities and a lot of examples where it can be useful. All the examples can be used as scala snippets and feel free to play with it in [Scastie](https://scastie.scala-lang.org/), an online scala editor. Enjoy!
 
 ## Introduction
-
----
 
 I'm sure that all of you, in some way, have heard about recursion. The idea of recursion lies in the usage of base definition and some rules to build new structures based on the previous one. In this context, inductive and recursive constructions can be seen as points of view of the same idea. I prefer to talk about induction whenever I talk about data types and recursion referred to functions that traverse inductive types. One of the main examples are natural numbers, in mathematics, and lists in computer science. In both cases we have a base case that tell us an example of an element of our structure and rules to produce new elements. In the case of natural numbers, the base case is _0 is a natural number_ and for the case of Lists, `Nil` is a List. The next step is to provide a rule to build, inductively, new numbers and new lists. For the first one we have the basic rule _every natural number has a next element_ and, for lists, _every list is Nil or has a head of type A and a tail of type `List[A]`_. A simple implementation of these two types in Scala is:
 
@@ -71,8 +68,6 @@ All of this looks like complicated: why we want to rebuild `Nat` if we have alre
 This blueprint, together with the basic type constructor is what is called recursion schemes. Lets develop these ideas.
 
 ## Functors, F-algebras and Fix
-
----
 
 As we have told before, we want to build an abstraction of recursion. I will try to build all these ideas over an example, to keep the focus on the intuition.
 Lets start with a simple example and recreate, in more detail, the blueprint of the previous section. Imagine we want to implement the ring structure of the set of integers, i.e., the set together with multiplication and addition. A simple implementation of this type would be:
@@ -226,8 +221,6 @@ We actually have reached the first goal, i.e., to find an inductive abstraction 
 
 ## Catamorphisms
 
-----
-
 If we take a fast recap, what we have is a functor `RingF` and our `Fix` that can transform our functor into an inductive data type. The `Fix[_]` type constructor has two functions, called `fix` and `unfix` that, as we already said, defines the type equality (isomorphism) `Fix[F] = F[Fix[F]]`. Our goal now is to transform our algebra `evalToInt: RingF[Int] => Int` into a function that can traverse our inductive data type. This is equivalent to find a function `m: Fix[RingF] => Int` out of `evalToInt`, because this mean that we know how to evaluate a general inductive expression. More generally, we can represent this idea for every functor and every algebra `eval: F[A] => A`. Lets make a simple diagram that represent all this ideas:
 
 <p align="center" >
@@ -279,8 +272,6 @@ And, with this, we can call it by typing `recursiveEvalToInt(exp1)`. One of the 
 One note about terminology: the name `cata` comes from catamorphism, which etymology comes from Greek and is the composed word cata, wich means  "downwards", and morphism, wich can be translated as "shape". So, this name fits very well with its behaviour.
 
 ## Lists and folds
-
----
 
 At the very beginning, we talk about Lists as an essential example of inductive data type. There is as well one basic operation over Lists implemented in scala called `foldRight`. What this function does is to traverse the List structure by evaluating a function with a starting value. Lest see an example of this:
 
@@ -400,8 +391,6 @@ So, as we have already see, `foldR` is exactly the same idea as `cata`, but in a
 
 ## A philosophical interpretation of folds and cata
 
----
-
 What we can conclude at this point is that `cata` is the abstraction of recursion. In some sense, the inductive type `Ring` is a set with elements inside it in form of expressions. On the other hand, `cata` is a way of transforming evaluations of operations into real evaluations of  exapressions. So, in some sense, `cata` is a way of looking at `Ring`, i.e, `cata` produces an observation of `Ring` for every algebra. A natural question can arise from this point: _if we know all the observations  of an inductive type, can we know everything about that type?_ The answer is affirmative and is one of the motivations of cathegory theory. Let's build this equivalence for our example. We want to build an equivalence, in the same sense as we did with the equality `Fix[RingF] = RingF[Fix[RingF]]` and the pair `fix` and `unfix`. To do this, we need to build two functions with shape 
 
 <p align="center" >
@@ -466,8 +455,6 @@ As a conclusion, we can interpret inductive types as the set of all observations
 
 ## F-coalgebras and Anamorphisms
 
----
-
 If we think about the `cata(evalToInt)` function, what this function does is to reduce a tree of operations into an Integer. Imagine that we want to do some converse function, i.e., a function that takes an `Int` and produces an element of `Ring`. The signature for this function would be `Int => RingF[Int]`. In a more general case, we can take any fixed type `A` and any functor `F` and write `A => F[A]`. Functions with the previous signature are called F-coalgebras, because of duality with F-algebras. 
 
 To provide an example of this kind of function, we can use a function that, given an integer, produces the expression of products of its factors. As we have done before, let's do this for a base case (just splitting our number in a product of two others) and then we will try to lift this function to produce the full factorization of the given number. 
@@ -523,8 +510,6 @@ expression3: Fix[RingF] = Fix(
 
 ## Hylomorphisms
 
----
-
 Now,,we can build expressions from integers using `ana`and know how to reduce it using `cata`. We can combine both to get a new evaluator by reading the direct diagram:
 
 <p align="center" >
@@ -563,8 +548,6 @@ Nice! We are using all our abstract functions to get pretty nice functionalities
 
 ## Morphisms between inductive structures
 
----
-
 We are going to end this talk with one last comment about inductive structures. We have already seen functions to evaluate (catamorphism) and to generate (anamorphism) inductive data types. But what happens if we want to use a function between inductive data Types? For instance, a function `simplify: Ring => Ring` that simplifies expressions as `x + x => 2*x`. This can be made by using our `Fix` and a special kind of algebra. The algebra has signature `RingF[Fix[RingF]] => Fix[RingF]`, because we need to work over the general case. Take a look to the implementation of this:
 
 ```scala
@@ -591,17 +574,10 @@ Take a look at the shape of this function. It has a lot of recursive calls in so
 
 ## Conclusions and References
 
----
-
 We have seen the recursion scheme pattern with a lot of examples. The main functions has been presented but we have left under the hood some details and mathematical justifications of the results. I tried to focus on the intuition and the constantly relation between mathematical diagrams and code, which is a funny way of writing code. 
 
 Some references I used to write this post are:
 
 * [Bhön-Berarducci](https://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
-
 * [Recursion schemes talk](https://www.youtube.com/watch?v=OwppikrRlOk&list=LL&index=13)
-
 * [Category Theory for Programmers](https://www.blurb.com/b/9603882-category-theory-for-programmers-scala-edition-pape)
-
-
-
